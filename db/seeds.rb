@@ -5,3 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+["AUDUSD", "AUDEUR", "EURUSD", "USDEUR"].each { |code| Pair.create(code: code) }
