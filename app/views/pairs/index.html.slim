@@ -1,9 +1,9 @@
 .text-center 
   h1 NELSON says...
 
-.row.mt-5
-  .col-md-6 
-    - @all_pairs.each do |pair|
+.row
+  - @all_pairs.each do |pair|
+    .col-md-6.mt-5 
       h4 = "For #{pair.code}: " + pair.advise
       table.table.table-striped.table-bordered.table-hover
         thead
@@ -13,7 +13,6 @@
             th Price
             th Ask
             th Bid
-            th TimeStamp
             th Created at
         tbody
           - pair.find_last_valuations.each do |pair_valuation|
@@ -23,5 +22,6 @@
               td = pair_valuation.price
               td = pair_valuation.ask
               td = pair_valuation.bid
-              td = pair_valuation.timestamp
-              td = pair_valuation.created_at
+              td = pair_valuation.created_at.to_s
+
+javascript: 
