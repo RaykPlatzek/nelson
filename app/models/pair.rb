@@ -1,6 +1,6 @@
 class Pair < ApplicationRecord
 
-  default_scope { order(timestamp: :desc) }
+  default_scope { order(code: :asc) }
 
   def trend_color
     return "bg-danger" if trend == TREND_DOWN 
@@ -21,7 +21,7 @@ class Pair < ApplicationRecord
   end
 
   def find_last_valuations
-    Pair.where(code: code).take(NUMBER_VALUATIONS)
+    Pair.where(code: code).reorder(timestamp: :desc).take(NUMBER_VALUATIONS)
   end
 
   private 

@@ -1,6 +1,7 @@
 = link_to "Refresh all", pairs_update_all_path, method: :post, class: "btn btn-info"
-.mt-5.text-center 
-  h1 NELSON says...
+.text-center.col-md-6.offset-md-3
+    = image_tag 'wizard.png', class: 'wizard'
+    h4.centre_text Hi my name is: Nelson and I say...
 .row
   - @all_pairs.each do |pair|
     .col-md-6.mt-5 
