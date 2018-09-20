@@ -3,46 +3,25 @@
 
 .row.mt-5
   .col-md-6 
-    h4 = "For AUD / USD: " + @result_usd unless @result_usd.nil?
-    table.table.table-striped.table-bordered.table-hover
-      thead
-        tr
-          th Trend
-          th Code
-          th Price
-          th Ask
-          th Bid
-          th TimeStamp
-          th Created at
-      tbody
-        - @aud_usd.each do |pair|
+    - @all_pairs.each do |pair|
+      h4 = "For #{pair.code}: " + pair.advise
+      table.table.table-striped.table-bordered.table-hover
+        thead
           tr
-            td class='#{pair.trend_color} text-white text-center fa fa-arrow-circle-#{pair.trend}' style="display: table-cell" 
-            td = pair.code
-            td = pair.price
-            td = pair.ask
-            td = pair.bid
-            td = pair.timestamp
-            td = pair.created_at
-  .col-md-6
-    h4 = "For AUD / EUR: " + @result_eur unless @result_eur.nil? 
-    table.table.table-striped.table-bordered.table-hover
-      thead
-        tr
-          th Trend
-          th Code
-          th Price
-          th Ask
-          th Bid
-          th TimeStamp
-          th Created at
-      tbody
-        - @aud_eur.each do |pair|
-          tr
-            td class='#{pair.trend_color} text-white text-center fa fa-arrow-circle-#{pair.trend}' style="display: table-cell" 
-            td = pair.code
-            td = pair.price
-            td = pair.ask
-            td = pair.bid
-            td = pair.timestamp
-            td = pair.created_at
+            th Trend
+            th Code
+            th Price
+            th Ask
+            th Bid
+            th TimeStamp
+            th Created at
+        tbody
+          - pair.find_last_valuations.each do |pair_valuation|
+            tr
+              td class='#{pair_valuation.trend_color} text-white text-center fa fa-arrow-circle-#{pair_valuation.trend}' style="display: table-cell" 
+              td = pair_valuation.code
+              td = pair_valuation.price
+              td = pair_valuation.ask
+              td = pair_valuation.bid
+              td = pair_valuation.timestamp
+              td = pair_valuation.created_at
