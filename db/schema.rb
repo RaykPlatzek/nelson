@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 2018_05_14_095001) do
 
   create_table "pairs", force: :cascade do |t|
     t.string "code"
-    t.decimal "price"
-    t.decimal "bid"
-    t.decimal "ask"
-    t.string "trend"
+    t.decimal "price", default: "0.0"
+    t.decimal "bid", default: "0.0"
+    t.decimal "ask", default: "0.0"
+    t.string "trend", default: "right"
     t.bigint "timestamp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
