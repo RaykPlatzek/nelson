@@ -71,3 +71,4 @@ gem 'bootstrap', '~> 4.1.2'
 gem 'jquery-rails'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem "font-awesome-rails"
+gem 'toastr-rails'

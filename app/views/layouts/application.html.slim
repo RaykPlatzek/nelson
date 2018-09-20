@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title Nelson
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    = yield
+
+
+- unless flash.empty?
+  - flash.each do |type, message|
+    / protect against code that uses flash as a type of session store, e.g. devise: flash[:timedout] = true
+    - next unless message.is_a? String
+    javascript:
+      (function () {
+        let messageType = "#{flash_class_helper_toastr(type)}";
+        if (messageType === 'warning' || messageType === 'error') {
+          toastr.options.timeOut = 0;
+        }
+        toastr[messageType]("#{j message.html_safe}");
+      })();

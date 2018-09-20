@@ -9,4 +9,11 @@ class PairsController < ApplicationController
 
   def create
   end
+
+  def update_all
+    UpdatePairsJob.perform_now
+    flash[:info] = "All updated :-)"
+    redirect_back(fallback_location: root_path)
+  end
+
 end

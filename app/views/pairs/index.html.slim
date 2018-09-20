@@ -1,6 +1,6 @@
-.text-center 
+= link_to "Refresh all", pairs_update_all_path, method: :post, class: "btn btn-info"
+.mt-5.text-center 
   h1 NELSON says...
-
 .row
   - @all_pairs.each do |pair|
     .col-md-6.mt-5 
