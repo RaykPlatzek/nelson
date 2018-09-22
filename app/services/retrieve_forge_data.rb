@@ -12,7 +12,7 @@ class RetrieveForgeData
   end
 
   def set_trend(pair)
-    last_price = Pair.where(code: pair["symbol"]).reorder(timestamp: :desc).first.price
+    last_price = Pair.where(code: pair["symbol"]).reorder(created_at: :desc).first.price
     return TREND_NO_CHANGE if last_price.nil?
     return TREND_DOWN if last_price.to_f > pair["price"]
     return TREND_UP if last_price.to_f < pair["price"]

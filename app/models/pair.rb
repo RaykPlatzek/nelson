@@ -21,7 +21,7 @@ class Pair < ApplicationRecord
   end
 
   def find_last_valuations
-    Pair.where(code: code).reorder(timestamp: :desc).take(NUMBER_VALUATIONS)
+    Pair.where(code: code).reorder(created_at: :desc).take(NUMBER_VALUATIONS)
   end
 
   private 
