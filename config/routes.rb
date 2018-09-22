@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  root 'landing_pages#index'
+  
   resources :valuations
   resources :orders
   resources :accounts
   devise_for :users
   resources :users
-  root action: :index, controller: :pairs
   get 'pairs/new'
   get 'pairs/create'
   post 'pairs/update_all'
