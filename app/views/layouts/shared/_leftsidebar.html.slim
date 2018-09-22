@@ -1,0 +1,33 @@
+.sidebar-profile
+  .avatar
+    img.img-circle.profile-image alt="profile" src="#{image_path('wizard.png')}" /
+    i.on.border-dark.animated.bounceIn
+  .profile-body.dropdown
+    h4.dropdown-toggle aria-expanded="false" data-toggle="dropdown"
+      = current_user&.name
+    small.title = current_user.level_label
+    ul.dropdown-menu.animated.fadeInRight role="menu" 
+      li.profile-progress
+        h5
+          span Level:
+          small = "#{current_user.level}"
+        .progress.progress-xs
+          .progress-bar.progress-bar-primary style=("width: #{current_user.level*10}%") 
+      li.divider
+      li
+        a href="javascript:void(0);" 
+          span.icon
+            i.fa.fa-user
+          | My Account
+      li
+        a href="javascript:void(0);" 
+          span.icon
+            i.fa.fa-sign-out
+          | Logout
+nav
+  h5.sidebar-header Navigation
+  ul.nav.nav-pills.nav-stacked
+    li class=("#{'active' if controller?('user') && action?('index')}") 
+      a href="/users" 
+        i.fa.fa-fw.fa-tachometer
+        | User

@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2018_09_22_090548) do
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "pair_id"
-    t.decimal "balance"
+    t.decimal "balance", default: "1000.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2018_09_22_090548) do
     t.integer "account_id"
     t.integer "user_id"
     t.integer "pair_id"
-    t.decimal "value"
+    t.decimal "value", default: "0.0"
     t.string "order_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 2018_09_22_090548) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "image"
-    t.integer "ranking"
-    t.integer "level"
+    t.integer "ranking", default: 0
+    t.integer "level", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(version: 2018_09_22_090548) do
 
   create_table "valuations", force: :cascade do |t|
     t.integer "pair_id"
-    t.decimal "price"
-    t.decimal "bid"
-    t.decimal "ask"
+    t.decimal "price", default: "0.0"
+    t.decimal "bid", default: "0.0"
+    t.decimal "ask", default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -12,10 +12,12 @@
 //
 //= require rails-ujs
 //= require jquery3
+//= require jquery-ui
 //= require popper
 //= require bootstrap-sprockets
 //= require activestorage
 //= require toastr
+//= require src/app
 //= require turbolinks
 //= require_tree .
 
@@ -36,3 +38,4 @@ $( document ).ready(function() {
    'hideMethod': 'fadeOut'
  }
 })
+

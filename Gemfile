@@ -66,3 +66,6 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem "font-awesome-rails"
 gem 'toastr-rails'
 gem 'devise'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'modernizr-rails'

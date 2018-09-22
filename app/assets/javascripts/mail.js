@@ -1,0 +1,1 @@
+//= require app/icheck/js/icheck.min

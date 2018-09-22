@@ -10,4 +10,4 @@ puts '...adding default Pairs'
 
 puts '...adding default User'
 
-User.create!(email: "rayk@nelson.com", password: "Test12345", password_confirmation: "Test12345")
+User.create!(name: "Rayk", email: "rayk@nelson.com", password: "Test12345", password_confirmation: "Test12345")

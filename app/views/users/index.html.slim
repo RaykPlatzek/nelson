@@ -1,19 +1,12 @@
-h1 Listing users
-
-table
-  thead
-    tr
-      th
-      th
-      th
-
-  tbody
-    - @users.each do |user|
-      tr
-        td = link_to 'Show', user
-        td = link_to 'Edit', edit_user_path(user)
-        td = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New User', new_user_path
+.pageheader
+  h1 Hi #{current_user.name} welcome back
+section#main-content
+  .row
+    .col-md-12.col-lg-6
+      .row
+        .col-md-6
+          .panel.panel-solid-success.widget-mini
+            .panel-body
+              i.icon-bar-chart
+              span.title.text-center Overall Account Balance
+              span.total.text-center = current_user&.overall_account_balance

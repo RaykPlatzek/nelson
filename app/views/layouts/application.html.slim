@@ -3,11 +3,23 @@ html
   head
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
     title Nelson
+    = javascript_include_tag :modernizr
     = csrf_meta_tags
+    = stylesheet_link_tag 'base'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'base'
   body
-    = yield
+    section#main-wrapper.theme-default
+      header#header
+        = render partial: "layouts/shared/header"
+      - if current_user.present?
+        aside.sidebar.sidebar-left
+          = render partial: "layouts/shared/leftsidebar"
+      section.main-content-wrapper
+        = yield
+        = render partial: "layouts/shared/footer"
+    / = render partial: "layouts/shared/config"
 
 
 - unless flash.empty?
@@ -20,5 +32,8 @@ html
         if (messageType === 'warning' || messageType === 'error') {
           toastr.options.timeOut = 0;
         }
-        toastr[messageType]("#{j message.html_safe}");
+        toastr.options.positionClass = 'toast-top-left';
+        toastr[messageType]("#{j message.html_safe}").css('width', '300px');;
       })();
+
+

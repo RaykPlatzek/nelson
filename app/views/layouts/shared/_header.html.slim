@@ -1,0 +1,43 @@
+.brand
+  a.logo href="/" 
+    i.icon-layers
+      span =< "Welcome to Nelson"
+/! logo end
+- if current_user.present?
+  ul.nav.navbar-nav.navbar-left
+    li.toggle-navigation.toggle-left
+      button#toggle-left.sidebar-toggle
+        i.fa.fa-bars
+
+ul.nav.navbar-nav.navbar-right
+  - if current_user.present?
+    li.dropdown.profile
+      a data-toggle="dropdown" href="#" 
+        span.meta
+          span.avatar
+            img.img-circle alt="" src="#{image_path('wizard.png')}" /
+          span.text = current_user&.email
+          span.caret
+      ul.dropdown-menu.animated.fadeInRight role="menu" 
+        li
+          span.arrow.top
+          h5
+            small.text-muted = "Level: "
+            span = current_user&.level
+          .progress.progress-xs
+            .progress-bar.progress-bar style=("width: #{current_user&.level*10}%") 
+        li.divider
+        li
+          a href="#" 
+            span.icon
+              i.fa.fa-user
+            | My Account
+        li.divider
+        li
+          = link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-info"
+  - else
+    .row.m-2
+      li 
+        =< link_to "Login", new_user_session_path, class: "btn btn-primary"
+      li
+        = link_to "Sign-up", new_user_registration_path, class: "btn btn-primary"
