@@ -7,3 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts '...adding default Pairs'
 ["AUDUSD", "USDAUD", "AUDEUR", "EURUSD", "USDEUR"].each { |code| Pair.find_or_create_by!(code: code) }
+
+puts '...adding default User'
+
+User.create!(email: "rayk@nelson.com", password: "Test12345", password_confirmation: "Test12345")
