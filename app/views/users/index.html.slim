@@ -1,12 +1,2 @@
-.pageheader
+.pageheader.text-center
   h1 Hi #{current_user.name} welcome back
-section#main-content
-  .row
-    .col-md-12.col-lg-6
-      .row
-        .col-md-6
-          .panel.panel-solid-success.widget-mini
-            .panel-body
-              i.icon-bar-chart
-              span.title.text-center Overall Account Balance
-              span.total.text-center = current_user&.overall_account_balance
