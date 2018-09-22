@@ -10,6 +10,11 @@ class User < ApplicationRecord
     accounts.all.map(&:balance).sum
   end
 
+  def has_account?(account)
+    return true if (accounts.map {|account| account.pair.code}).include?(account.pair.code)
+    false
+  end
+
   def level_label
     case level
       when 1 

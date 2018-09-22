@@ -15,12 +15,12 @@
           .progress-bar.progress-bar-primary style=("width: #{current_user.level*10}%") 
       li.divider
       li
-        a href="javascript:void(0);" 
+        a href="#" 
           span.icon
             i.fa.fa-user
           | My Account
       li
-        a href="javascript:void(0);" 
+        a href="#{destroy_user_session_path}" data-method="delete"
           span.icon
             i.fa.fa-sign-out
           | Logout
@@ -31,3 +31,8 @@ nav
       a href="/users" 
         i.fa.fa-fw.fa-tachometer
         | User
+  ul.nav.nav-pills.nav-stacked
+    li class=("#{'active' if controller?('account')}") 
+      a href="/accounts" 
+        i.fa.fa-book
+        | Accounts

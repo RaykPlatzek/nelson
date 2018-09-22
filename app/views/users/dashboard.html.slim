@@ -1,0 +1,16 @@
+.pageheader
+  h1 Dashboard
+section#main-content
+  - if current_user.accounts.present?
+    .row
+      .col-md-12.col-lg-6
+        .row
+          .col-md-6
+              .panel.panel-solid-success.widget-mini
+                .panel-body
+                  i.icon-bar-chart
+                  span.title.text-center Overall Account Balance
+                  span.total.text-center = current_user&.overall_account_balance
+  - else
+    strong = "Please open at least one trading account to start playing"
+    div = link_to "Create my first trading account", new_account_path, class: "btn btn-sm btn-info" 

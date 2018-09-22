@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :accounts
   devise_for :users
   resources :users
+  get '/dashboard' => 'users#dashboard'
+  
   resources :pairs
   post 'pairs/update_all'
 end

@@ -26,10 +26,10 @@ class AccountsController < ApplicationController
   # POST /accounts.json
   def create
     @account = Account.new(account_params)
-
+    return redirect_to accounts_path, alert: "You already have an account for #{@account.pair.code}" if current_user.has_account?(@account)
     respond_to do |format|
       if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
+        format.html { redirect_to accounts_path, notice: 'Account was successfully created.' }
         format.json { render :show, status: :created, location: @account }
       else
         format.html { render :new }
@@ -70,6 +70,6 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.fetch(:account, {})
+      params.require(:account).permit(:user_id, :pair_id)
     end
 end

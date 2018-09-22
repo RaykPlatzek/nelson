@@ -1,9 +1,16 @@
-= form_for @account do |f|
+= simple_form_for @account do |f|
   - if @account.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@account.errors.count, "error")} prohibited this account from being saved:"
+    #error_explanation.alert.alert-danger
+      h3 = "#{pluralize(@account.errors.count, "error")} prohibited this account from being saved:"
       ul
         - @account.errors.full_messages.each do |message|
           li = message
 
-  .actions = f.submit
+  .row
+    .col-sm-6
+      .field.form-group
+        = f.label "Please select the currency pair you want to trade with this account"
+        = f.hidden_field :user_id, value: current_user.id
+        = f.select(:pair_id, options_for_select([1, 2, 3, 4, 5]), {}, class: "form-control")
+
+  = f.submit "Create", class: "btn btn-primary"
