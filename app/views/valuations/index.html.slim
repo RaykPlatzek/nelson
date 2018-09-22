@@ -1,0 +1,19 @@
+h1 Listing valuations
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @valuations.each do |valuation|
+      tr
+        td = link_to 'Show', valuation
+        td = link_to 'Edit', edit_valuation_path(valuation)
+        td = link_to 'Destroy', valuation, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Valuation', new_valuation_path

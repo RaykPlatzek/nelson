@@ -1,5 +1,5 @@
 class Pair < ApplicationRecord
-
+  has_many :valuations
   default_scope { order(code: :asc) }
 
   def trend_color

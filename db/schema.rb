@@ -10,11 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_14_095001) do
+ActiveRecord::Schema.define(version: 2018_09_22_090548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "pair_id"
+    t.decimal "balance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "account_id"
+    t.integer "user_id"
+    t.integer "pair_id"
+    t.decimal "value"
+    t.string "order_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "pairs", force: :cascade do |t|
     t.string "code"
@@ -23,6 +41,31 @@ ActiveRecord::Schema.define(version: 2018_05_14_095001) do
     t.decimal "ask", default: "0.0"
     t.string "trend", default: "right"
     t.bigint "timestamp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.integer "ranking"
+    t.integer "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "valuations", force: :cascade do |t|
+    t.integer "pair_id"
+    t.decimal "price"
+    t.decimal "bid"
+    t.decimal "ask"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

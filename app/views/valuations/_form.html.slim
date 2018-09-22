@@ -1,0 +1,9 @@
+= form_for @valuation do |f|
+  - if @valuation.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@valuation.errors.count, "error")} prohibited this valuation from being saved:"
+      ul
+        - @valuation.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

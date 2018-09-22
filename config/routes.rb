@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :valuations
+  resources :orders
+  resources :accounts
+  devise_for :users
+  resources :users
   root action: :index, controller: :pairs
   get 'pairs/new'
   get 'pairs/create'
