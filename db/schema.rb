@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2018_09_22_160025) do
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "pair_id"
-    t.decimal "balance", default: "1000.0"
+    t.decimal "balance", precision: 35, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "account_type"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2018_09_22_160025) do
     t.integer "account_id"
     t.integer "user_id"
     t.integer "pair_id"
-    t.decimal "value", default: "0.0"
+    t.decimal "value", precision: 35, scale: 2, default: "0.0"
     t.string "order_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(version: 2018_09_22_160025) do
 
   create_table "pairs", force: :cascade do |t|
     t.string "code"
-    t.decimal "price", default: "0.0"
-    t.decimal "bid", default: "0.0"
-    t.decimal "ask", default: "0.0"
+    t.decimal "price", precision: 35, scale: 8, default: "0.0"
+    t.decimal "bid", precision: 35, scale: 8, default: "0.0"
+    t.decimal "ask", precision: 35, scale: 8, default: "0.0"
     t.string "trend", default: "right"
     t.bigint "timestamp"
     t.datetime "created_at", null: false
@@ -64,9 +64,9 @@ ActiveRecord::Schema.define(version: 2018_09_22_160025) do
 
   create_table "valuations", force: :cascade do |t|
     t.integer "pair_id"
-    t.decimal "price", default: "0.0"
-    t.decimal "bid", default: "0.0"
-    t.decimal "ask", default: "0.0"
+    t.decimal "price", precision: 35, scale: 8, default: "0.0"
+    t.decimal "bid", precision: 35, scale: 8, default: "0.0"
+    t.decimal "ask", precision: 35, scale: 8, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

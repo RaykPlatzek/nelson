@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.integer :account_id
       t.integer :user_id
       t.integer :pair_id
-      t.decimal :value, default: 0
+      t.decimal :value, precision: 35, scale: 2, default: 0.0
       t.string :order_type
       t.timestamps
     end

@@ -34,7 +34,7 @@ nav
   ul.nav.nav-pills.nav-stacked
     li class=("#{'active' if controller?('pairs') && action?('dashboard')}") 
       a href="/pairs" 
-        i.fa.fa-book
+        i.fa.fa-dollar
         | Valuations
   ul.nav.nav-pills.nav-stacked
     li class=("#{'active open' if controller?('accounts')}") 
@@ -45,9 +45,11 @@ nav
       ul.nav-sub
         li class=("#{'active' if controller?('accounts') && action?('index')}") 
           a href="/accounts" 
+            i.fa.fa-exchange
             | Trading Accounts
 
       ul.nav-sub
         li class=("#{'active' if controller?('accounts') && action?('cash_account')}") 
           a href="/cash_account" 
+            i.fa.fa-money
             | Cash Account
