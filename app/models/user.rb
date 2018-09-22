@@ -18,7 +18,7 @@ class User < ApplicationRecord
   end
 
   def cash_account 
-    accounts.find_or_create_by(account_type: CASH_ACCOUNT)
+    accounts.find_by(account_type: CASH_ACCOUNT)
   end
 
   def trading_accounts
