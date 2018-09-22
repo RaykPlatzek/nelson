@@ -20,9 +20,9 @@
             tr
               td class='#{pair_valuation.trend_color} text-white text-center fa fa-arrow-circle-#{pair_valuation.trend}' style="display: table-cell" 
               td = pair_valuation.code
-              td = pair_valuation.price
-              td = pair_valuation.ask
-              td = pair_valuation.bid
+              td = '%.6f' % pair_valuation.price
+              td = '%.6f' % pair_valuation.ask
+              td = '%.6f' % pair_valuation.bid
               td = pair_valuation.created_at.to_s
 
 javascript: 

@@ -18,7 +18,7 @@ class User < ApplicationRecord
   end
 
   def cash_account 
-    accounts.where(account_type: CASH_ACCOUNT).first
+    accounts.find_or_create_by(account_type: CASH_ACCOUNT)
   end
 
   def trading_accounts

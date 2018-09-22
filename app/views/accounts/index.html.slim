@@ -30,5 +30,5 @@
                 tr.text-right
                   td = i+1
                   td = account.pair.code 
-                  td = account.balance
+                  td = '%.2f' % account.balance
                   th = account.orders.count

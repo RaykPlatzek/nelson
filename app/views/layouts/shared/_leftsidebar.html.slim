@@ -27,12 +27,12 @@
 nav
   h5.sidebar-header Navigation
   ul.nav.nav-pills.nav-stacked
-    li class=("#{'active' if controller?('users')}") 
+    li class=("#{'active' if controller?('users') && action?('dashboard')}") 
       a href="/dashboard" 
         i.fa.fa-fw.fa-tachometer
         | Dashboard
   ul.nav.nav-pills.nav-stacked
-    li class=("#{'active' if controller?('pairs') && action?('dashboard')}") 
+    li class=("#{'active' if controller?('pairs') && action?('index')}") 
       a href="/pairs" 
         i.fa.fa-dollar
         | Valuations

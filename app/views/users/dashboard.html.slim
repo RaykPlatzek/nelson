@@ -10,7 +10,7 @@ section#main-content
                 .panel-body
                   i.icon-bar-chart
                   span.title.text-center Overall Account Balance
-                  span.total.text-center = current_user&.overall_account_balance
+                  span.total.text-center = '%.2f' % current_user&.overall_account_balance
   - else
     strong = "Please open at least one trading account to start playing"
     div = link_to "Create my first trading account", new_account_path, class: "btn btn-sm btn-info" 
