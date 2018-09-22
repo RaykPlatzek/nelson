@@ -1,0 +1,34 @@
+.row
+  .col-md-6.col-md-offset-3
+    #login-wrapper
+      header
+        .brand
+          a.logo href="/" 
+            i.icon-eye
+      .panel.panel-primary
+        .panel-heading
+          h3.panel-title
+            | Sign Up
+        .panel-body
+          p Create a new account
+          .form-horizontal = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            .form-group
+              .col-md-12
+                #email =< f.input :name, label: false, placeholder: "Name", class: "form-control"
+                i.fa.fa-user 
+            .form-group
+              .col-md-12
+                #email =< f.email_field :email, placeholder: "Email", class: "form-control" 
+                i.fa.fa-envelope
+            .form-group
+              .col-md-12
+                #password = f.password_field :password, placeholder: "Password", class: "form-control"
+                i.fa.fa-lock
+
+            .form-group
+              .col-md-12
+                #password = f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "form-control"
+                i.fa.fa-lock
+
+            .col-md-12.m-t-xl
+              = f.submit "Sign Up", class: "btn btn-primary btn-block"
