@@ -1,5 +1,5 @@
 class PairsController < ApplicationController
-  
+  before_action :authenticate_user!
   def index
     @all_pairs = Pair.all_pairs
   end

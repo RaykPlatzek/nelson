@@ -1,4 +1,5 @@
 class ValuationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_valuation, only: [:show, :edit, :update, :destroy]
 
   # GET /valuations
