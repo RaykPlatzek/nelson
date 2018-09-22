@@ -1,0 +1,28 @@
+.pageheader
+  h1 Your Cash Account
+
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Cash Account
+        .actions.pull-right
+          i.fa.fa-expand
+          i.fa.fa-chevron-down
+          i.fa.fa-times
+      .panel-body
+        .table-responsive
+          table.table.table-bordered.table-striped
+            thead
+              tr.text-right
+                th #
+                th Cash Curreny
+                th Balance
+                th Number of orders
+
+            tbody
+              tr.text-right
+                td = 1
+                td = CASH_CURRENCY 
+                td = @cash_account.balance
+                th = @cash_account.orders.count

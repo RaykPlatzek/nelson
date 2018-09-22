@@ -10,7 +10,8 @@
     .col-sm-6
       .field.form-group
         = f.label "Please select the currency pair you want to trade with this account"
+        = f.hidden_field :account_type, value: TRADING_ACCOUNT
         = f.hidden_field :user_id, value: current_user.id
-        = f.select(:pair_id, options_for_select([1, 2, 3, 4, 5]), {}, class: "form-control")
+        = f.select(:pair_id, options_for_select(@pairs.map{ |pair| [pair.code, pair.id]}), {}, class: "form-control")
 
   = f.submit "Create", class: "btn btn-primary"

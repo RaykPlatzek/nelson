@@ -5,7 +5,11 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.all
+    @accounts = current_user.trading_accounts
+  end
+
+  def cash_account
+    @cash_account = current_user.cash_account
   end
 
   # GET /accounts/1
@@ -16,6 +20,7 @@ class AccountsController < ApplicationController
   # GET /accounts/new
   def new
     @account = Account.new
+    @pairs = Pair.all_pairs
   end
 
   # GET /accounts/1/edit
@@ -70,6 +75,6 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:user_id, :pair_id)
+      params.require(:account).permit(:user_id, :pair_id, :account_type)
     end
 end

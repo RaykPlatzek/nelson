@@ -5,14 +5,24 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :accounts
   has_many :orders
+  after_create :create_cash_account
 
   def overall_account_balance
     accounts.all.map(&:balance).sum
   end
 
   def has_account?(account)
-    return true if (accounts.map {|account| account.pair.code}).include?(account.pair.code)
+    return false unless trading_accounts.present?
+    return true if (trading_accounts.map {|account| account&.pair&.code}).include?(account&.pair&.code)
     false
+  end
+
+  def cash_account 
+    accounts.where(account_type: CASH_ACCOUNT).first
+  end
+
+  def trading_accounts
+    accounts.where(account_type: TRADING_ACCOUNT)
   end
 
   def level_label
@@ -33,5 +43,11 @@ class User < ApplicationRecord
         label = "Roughless"
       end
       label
+  end
+
+  private
+
+  def create_cash_account
+    accounts.create!(account_type: CASH_ACCOUNT, balance: STARTING_BALANCE)
   end
 end

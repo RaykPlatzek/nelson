@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :valuations
   resources :orders
   resources :accounts
+  get '/cash_account' => 'accounts#cash_account'
   devise_for :users
   resources :users
   get '/dashboard' => 'users#dashboard'

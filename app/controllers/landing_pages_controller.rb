@@ -1,5 +1,5 @@
 class LandingPagesController < ApplicationController
   def index
-    redirect_to users_path if current_user.present?
+    redirect_to dashboard_path if current_user.present?
   end
 end

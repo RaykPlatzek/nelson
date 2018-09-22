@@ -27,12 +27,27 @@
 nav
   h5.sidebar-header Navigation
   ul.nav.nav-pills.nav-stacked
-    li class=("#{'active' if controller?('user') && action?('index')}") 
+    li class=("#{'active' if controller?('users')}") 
       a href="/users" 
         i.fa.fa-fw.fa-tachometer
-        | User
+        | Dashboard
   ul.nav.nav-pills.nav-stacked
-    li class=("#{'active' if controller?('account')}") 
+    li class=("#{'active' if controller?('pairs')}") 
+      a href="/pairs" 
+        i.fa.fa-book
+        | Valuations
+  ul.nav.nav-pills.nav-stacked
+    li class=("#{'active open' if controller?('accounts')}") 
       a href="/accounts" 
         i.fa.fa-book
         | Accounts
+
+      ul.nav-sub
+        li class=("#{'active' if controller?('accounts') && action?('index')}") 
+          a href="/accounts" 
+            | Trading Accounts
+
+      ul.nav-sub
+        li class=("#{'active' if controller?('accounts') && action?('cash_account')}") 
+          a href="/cash_account" 
+            | Cash Account
