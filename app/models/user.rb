@@ -7,8 +7,21 @@ class User < ApplicationRecord
   has_many :orders
   after_create :create_cash_account
 
-  def overall_account_balance
-    accounts.all.map(&:balance).sum
+  def self.leaders_by_cash_account
+    leading_cash_accounts = Account.where(account_type: CASH_ACCOUNT).order(balance: :desc).take(LEADER_BOARD_LENGTH)
+    leading_cash_accounts.map {|account| account.user}
+  end
+
+  def trades
+    orders.count
+  end
+
+  def cash_account_balance
+    cash_account.balance
+  end
+
+  def money_invested
+    trading_accounts.all.map(&:balance).sum
   end
 
   def has_account?(account)

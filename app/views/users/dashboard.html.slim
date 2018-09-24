@@ -9,8 +9,14 @@ section#main-content
               .panel.panel-solid-success.widget-mini
                 .panel-body
                   i.icon-bar-chart
-                  span.title.text-center Overall Account Balance
-                  span.total.text-center = '%.2f' % current_user&.overall_account_balance
+                  span.title.text-center Cash Account Balance
+                  span.total.text-center = '%.2f' % current_user&.cash_account_balance
+          .col-md-6
+              .panel.panel-solid-success.widget-mini
+                .panel-body
+                  i.icon-bar-chart
+                  span.title.text-center Money invested
+                  span.total.text-center = '%.2f' % current_user&.money_invested
   - else
     strong = "Please open at least one trading account to start playing"
     div = link_to "Create my first trading account", new_account_path, class: "btn btn-sm btn-info" 

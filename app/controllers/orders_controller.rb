@@ -30,6 +30,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.pair_id = @order.account.pair_id
+    @order.value = -@order.value if @order.sell_order?
     begin
       @order.trading_price = @order.pair.current_valuation.price
     rescue RuntimeError => e

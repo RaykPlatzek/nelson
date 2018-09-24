@@ -1,4 +1,26 @@
 br
 br
 br
-h1.m-t-xl.text-center Comming soon
+h1.m-t-xl.text-center 
+  = "Leader Board"
+  .col-md-12.mt-5 
+    table.table.table-striped.table-bordered.table-hover
+      thead
+        tr
+          th Trend
+          th #
+          th Icon
+          th Name
+          th Level
+          th Status
+          th Trades
+      tbody
+        - User.leaders_by_cash_account.each.with_index do |user, index|
+          tr
+            td class='#{trend_color(TREND_NO_CHANGE)} text-white text-center fa fa-arrow-circle-#{TREND_NO_CHANGE}' style="display: table-cell" 
+            td = index + 1
+            td.icon-leaderboard  = image_tag("wizard.png")
+            td = user.name
+            td = user.level
+            td = user.level_label
+            td = user.trades
