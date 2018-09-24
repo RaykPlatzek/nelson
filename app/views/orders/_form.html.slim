@@ -1,9 +1,38 @@
-= form_for @order do |f|
-  - if @order.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
-      ul
-        - @order.errors.full_messages.each do |message|
-          li = message
+- if @order.errors.any?
+  #error_explanation.alert.alert-danger
+    h3 = "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
+    ul
+      - @order.errors.full_messages.each do |message|
+        li = message
+.row
+  .col-md-6.col-md-offset-3
+    #login-wrapper
+      header
+        .brand
+          a.logo href="/" 
+            i.fa.fa-eye
+      .panel.panel-primary
+        .panel-heading
+          h3.panel-title
+            = "New Order"
+        .panel-body
+          .form-horizontal = simple_form_for(@order) do |f|
+            = f.hidden_field :user_id, value: current_user.id
+            = f.hidden_field :pair_id
+            .form-group
+              .col-md-12
+                = f.label "Order Type:"
+                =< f.select(:order_type, options_for_select([ORDER_TYPE_BUY, ORDER_TYPE_SELL]), {}, class: "form-control")
 
-  .actions = f.submit
+            .form-group
+              .col-md-12
+                = f.label "Which trading account do you want to trade on:"
+                =< f.select(:account_id, options_for_select(current_user&.trading_accounts&.map {|account| [account.pair.code, account.id]}), {}, class: "form-control")
+
+            .form-group
+              .col-md-12
+                = f.label "How much do you want to invest:"
+                =< f.input :value, label: false, :input_html => {value: number_with_precision(f.object.value, precision: 2) }
+
+            .col-md-12.m-t-xl
+              = f.submit "Create Order", class: "btn btn-primary btn-block"

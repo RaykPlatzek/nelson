@@ -53,3 +53,9 @@ nav
           a href="/cash_account" 
             i.fa.fa-money
             | Cash Account
+  
+  ul.nav.nav-pills.nav-stacked
+    li class=("#{'active open' if controller?('orders')}") 
+      a href="/orders" 
+        i.fa.fa-book
+        | Trades

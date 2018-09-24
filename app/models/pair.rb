@@ -16,5 +16,10 @@ class Pair < ApplicationRecord
     valuations.reorder(created_at: :desc).take(number)
   end
 
+  def current_valuation
+    RetrieveValuationData.new.call([code])
+    last_valuations(1).first
+  end
+
   private 
 end

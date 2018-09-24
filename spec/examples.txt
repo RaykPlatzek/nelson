@@ -1,8 +1,9 @@
 example_id                                             | status | run_time        |
 ------------------------------------------------------ | ------ | --------------- |
-./spec/job/update_pair_valuations_job_spec.rb[1:1:1]   | passed | 0.10096 seconds |
-./spec/job/update_pair_valuations_job_spec.rb[1:1:2]   | passed | 0.04294 seconds |
-./spec/services/retrieve_valuation_data_spec.rb[1:1:1] | passed | 0.01479 seconds |
-./spec/services/retrieve_valuation_data_spec.rb[1:2:1] | passed | 0.01332 seconds |
-./spec/services/retrieve_valuation_data_spec.rb[1:2:2] | passed | 0.02315 seconds |
-./spec/services/retrieve_valuation_data_spec.rb[1:2:3] | passed | 0.01915 seconds |
+./spec/job/update_pair_valuations_job_spec.rb[1:1:1]   | passed | 0.04033 seconds |
+./spec/job/update_pair_valuations_job_spec.rb[1:1:2]   | passed | 0.13167 seconds |
+./spec/services/retrieve_valuation_data_spec.rb[1:1:1] | passed | 0.04649 seconds |
+./spec/services/retrieve_valuation_data_spec.rb[1:2:1] | passed | 0.04568 seconds |
+./spec/services/retrieve_valuation_data_spec.rb[1:2:2] | passed | 0.05586 seconds |
+./spec/services/retrieve_valuation_data_spec.rb[1:2:3] | passed | 0.0439 seconds  |
+./spec/services/retrieve_valuation_data_spec.rb[1:2:4] | failed | 0.14542 seconds |

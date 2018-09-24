@@ -1,7 +1,8 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_account, only: [:show, :edit, :update, :destroy]
-
+  
+  decorates_assigned :account, with: AccountDecorator
   # GET /accounts
   # GET /accounts.json
   def index

@@ -1,19 +1,29 @@
-h1 Listing orders
+.pageheader.pageheader.text-center
+  h1 Your Trades
 
-table
-  thead
-    tr
-      th
-      th
-      th
+.pull-right
+  = link_to "Create new order", new_order_path, class: "btn btn-sm btn-primary" 
 
-  tbody
-    - @orders.each do |order|
-      tr
-        td = link_to 'Show', order
-        td = link_to 'Edit', edit_order_path(order)
-        td = link_to 'Destroy', order, data: { confirm: 'Are you sure?' }, method: :delete
+.clearfix
 
-br
-
-= link_to 'New Order', new_order_path
+- @trading_accounts.each do |account|
+  .col-md-12-m-t-l
+    h4 = "Trades for  #{account&.pair&.code}: "
+    table.table.table-striped.table-bordered.table-hover
+      thead
+        tr
+          th Trade
+          th Order Type
+          th Code
+          th Trading Price
+          th Value
+          th Trading time
+      tbody
+        - account.orders.each_with_index do |order, index|
+          tr
+            td = index
+            td = order.order_type
+            td = order.pair.code
+            td = '%.6f' % order.trading_price
+            td = '%.6f' % order.value
+            td = order.created_at.to_s

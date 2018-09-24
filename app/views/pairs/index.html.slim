@@ -14,6 +14,7 @@
             th Price
             th Ask
             th Bid
+            / th Timestamp
             th Created at
         tbody
           - pair.last_valuations.each do |valuation|
@@ -23,4 +24,5 @@
               td = '%.6f' % valuation.price
               td = '%.6f' % valuation.ask
               td = '%.6f' % valuation.bid
+              / td = valuation.timestamp
               td = valuation.created_at.to_s

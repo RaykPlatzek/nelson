@@ -6,6 +6,7 @@ class RetrieveValuationData
       url: 'https://forex.1forge.com/1.0.3/quotes?pairs=' + codes.join(",") + '&api_key=' + Rails.application.credentials.forge_api_key,
     )
     json = JSON.parse(response)
+    raise json["message"] if !json.is_a?(Array) && json["error"].present?
     json.each do |api_response|
       @pair = Pair.find_or_create_by!(code: api_response["symbol"])
       @pair.update!(trend: set_trend(api_response))

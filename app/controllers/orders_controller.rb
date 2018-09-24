@@ -1,11 +1,12 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  decorates_assigned :order, with: OrderDecorator
   # GET /orders
   # GET /orders.json
   def index
     @orders = Order.all
+    @trading_accounts = current_user.trading_accounts
   end
 
   # GET /orders/1
@@ -16,6 +17,8 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @order_type = params[:type]
+    @trading_accounts = current_user.trading_accounts
   end
 
   # GET /orders/1/edit
@@ -26,10 +29,15 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-
+    @order.pair_id = @order.account.pair_id
+    begin
+      @order.trading_price = @order.pair.current_valuation.price
+    rescue RuntimeError => e
+      return redirect_to new_order_path, alert: e.message 
+    end
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -70,6 +78,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.fetch(:order, {})
+      params.require(:order).permit(:order_type, :user_id, :pair_id, :value, :account_id)
     end
 end
