@@ -99,7 +99,7 @@ VCR.configure do |c|
   c.hook_into :webmock
   c.configure_rspec_metadata!
   c.allow_http_connections_when_no_cassette = true
-
+  c.filter_sensitive_data('<API-KEY>') { Rails.application.credentials.forge_api_key }
   # Errors for any requests with '99999' in them
   c.before_http_request do |request|
     raise OpenURI::HTTPError.new("message","io") if request.uri =~ /99999/

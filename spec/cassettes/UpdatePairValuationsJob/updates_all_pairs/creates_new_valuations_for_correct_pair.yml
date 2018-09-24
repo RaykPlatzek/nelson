@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://forex.1forge.com/1.0.3/quotes?api_key=XXXXX&pairs=AUDEUR
+    uri: https://forex.1forge.com/1.0.3/quotes?api_key=<API-KEY>&pairs=AUDEUR
     body:
       encoding: US-ASCII
       string: ''
@@ -57,7 +57,7 @@ http_interactions:
   recorded_at: Mon, 24 Sep 2018 08:36:35 GMT
 - request:
     method: get
-    uri: https://forex.1forge.com/1.0.3/quotes?api_key=XXXXX&pairs=AUDUSD
+    uri: https://forex.1forge.com/1.0.3/quotes?api_key=<API-KEY>&pairs=AUDUSD
     body:
       encoding: US-ASCII
       string: ''
@@ -112,7 +112,7 @@ http_interactions:
   recorded_at: Mon, 24 Sep 2018 08:36:36 GMT
 - request:
     method: get
-    uri: https://forex.1forge.com/1.0.3/quotes?api_key=XXXXX&pairs=USDAUD
+    uri: https://forex.1forge.com/1.0.3/quotes?api_key=<API-KEY>&pairs=USDAUD
     body:
       encoding: US-ASCII
       string: ''

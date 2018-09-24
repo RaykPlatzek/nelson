@@ -15,6 +15,12 @@ module ApplicationHelper
     end
   end
 
+  def trend_color(trend)
+    return "bg-danger" if trend == TREND_DOWN 
+    return "bg-success" if trend == TREND_UP 
+    "bg-info"
+  end
+
   def controller?(*controller)
     controller.include?(params[:controller])
   end

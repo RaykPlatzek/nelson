@@ -19,7 +19,7 @@
         tbody
           - pair.last_valuations.each do |valuation|
             tr
-              td class='#{valuation.pair.trend_color} text-white text-center fa fa-arrow-circle-#{valuation.pair.trend}' style="display: table-cell" 
+              td class='#{trend_color(valuation.trend)} text-white text-center fa fa-arrow-circle-#{valuation.trend}' style="display: table-cell" 
               td = valuation.pair.code
               td = '%.6f' % valuation.price
               td = '%.6f' % valuation.ask

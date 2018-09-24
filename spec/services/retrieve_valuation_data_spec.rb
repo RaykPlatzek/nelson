@@ -37,8 +37,9 @@ RSpec.describe "RetrieveValuationData", :vcr do
     end
 
     it "no_change if no price before" do
+      pair
       RetrieveValuationData.new.call([AUDEUR])
-      expect(pair.last_valuations(1).first.price).to eq 0.618185.to_d
+      expect(pair.last_valuations(1).first.price).to eq 0.617757.to_d
       expect(pair.reload.trend).to eq TREND_NO_CHANGE
     end
   end

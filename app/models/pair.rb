@@ -2,12 +2,6 @@ class Pair < ApplicationRecord
   has_many :valuations
   default_scope { order(code: :asc) }
 
-  def trend_color
-    return "bg-danger" if trend == TREND_DOWN 
-    return "bg-success" if trend == TREND_UP 
-    "bg-info"
-  end
-
   def advise
     GiveAdvise.new.call(last_valuations)
   end

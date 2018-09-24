@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://forex.1forge.com/1.0.3/quotes?api_key=XXXX&pairs=AUDEUR
+    uri: https://forex.1forge.com/1.0.3/quotes?api_key=<API-KEY>&pairs=AUDEUR
     body:
       encoding: US-ASCII
       string: ''
