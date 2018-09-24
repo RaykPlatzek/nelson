@@ -11,4 +11,7 @@ class Account < ApplicationRecord
     balance - order_value
   end
 
+  def total_trades
+    user.orders.count
+  end
 end

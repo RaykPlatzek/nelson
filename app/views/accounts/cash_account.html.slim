@@ -18,11 +18,11 @@
                 th #
                 th Cash Currency
                 th Balance
-                th Number of orders
+                th Number Trades
 
             tbody
               tr.text-right
                 td = 1
                 td = CASH_CURRENCY 
                 td = '%.2f' % @cash_account&.balance
-                th = @cash_account&.orders&.count
+                th = @cash_account&.total_trades
