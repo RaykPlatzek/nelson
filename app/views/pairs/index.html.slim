@@ -16,7 +16,7 @@
             th Bid
             th Created at
         tbody
-          - pair.find_last_valuations.each do |pair_valuation|
+          - pair.last_valuation.each do |pair_valuation|
             tr
               td class='#{pair_valuation.trend_color} text-white text-center fa fa-arrow-circle-#{pair_valuation.trend}' style="display: table-cell" 
               td = pair_valuation.code

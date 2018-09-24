@@ -10,7 +10,7 @@ module Clockwork
     puts "Running #{job}"
     job.constantize.perform_later
   end
-    every(REFRESH_TIME, 'UpdatePairsJob')
+    every(REFRESH_TIME, 'UpdatePairValuationsJob')
 end
 
 # to start locally use bundle exec clockwork config/clock.rb

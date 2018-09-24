@@ -8,26 +8,13 @@ class Pair < ApplicationRecord
     "bg-info"
   end
 
-  def self.all_pairs
-    all_pairs = []
-    uniq_codes.each do |code|
-      all_pairs << Pair.find_by(code: code)      
-    end
-    all_pairs
-  end
-
   def advise
-    GiveAdvise.new.call(find_last_valuations)
+    GiveAdvise.new.call(last_valuations)
   end
 
-  def find_last_valuations
-    Pair.where(code: code).reorder(created_at: :desc).take(NUMBER_VALUATIONS)
+  def last_valuations(number = NUMBER_VALUATIONS)
+    valuations.reorder(created_at: :desc).take(number)
   end
 
   private 
-
-  def self.uniq_codes
-    Pair.all.map(&:code).uniq
-  end
-
 end

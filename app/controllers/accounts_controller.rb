@@ -20,7 +20,7 @@ class AccountsController < ApplicationController
   # GET /accounts/new
   def new
     @account = Account.new
-    @pairs = Pair.all_pairs
+    @pairs = Pair.all
   end
 
   # GET /accounts/1/edit

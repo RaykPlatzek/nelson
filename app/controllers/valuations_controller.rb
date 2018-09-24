@@ -52,6 +52,12 @@ class ValuationsController < ApplicationController
     end
   end
 
+  def update_all
+    UpdatePairValuationsJob.perform_now
+    flash[:info] = "All updated :-)"
+    redirect_back(fallback_location: root_path)
+  end
+
   # DELETE /valuations/1
   # DELETE /valuations/1.json
   def destroy
