@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'landing_pages#index'
   
   resources :valuations
-  post 'valautions/update_all'
+  post 'valuations/update_all'
   resources :orders
   resources :accounts
   get '/cash_account' => 'accounts#cash_account'
