@@ -1,8 +1,8 @@
 h1.m-t-xl.text-center.color-white class=("#{'color-white' if controller?('landing_pages') }")
   strong = "Leader Board"
 .row
-  .col-6.col-md-4
-  .col-6.col-md-4.mt-5.font-size-12
+  .col-3
+  .col-6.mt-5.font-size-12
     table.table.table-striped.table-bordered.table-hover.shade-primary
       thead
         tr
@@ -12,7 +12,7 @@ h1.m-t-xl.text-center.color-white class=("#{'color-white' if controller?('landin
           th Name
           th Level
           th Status
-          th Balance Cash
+          th Balance
           th Trades
       tbody
         - User.leaders_by_cash_account.each.with_index do |user, index|
@@ -23,5 +23,5 @@ h1.m-t-xl.text-center.color-white class=("#{'color-white' if controller?('landin
             td = user.name
             td = user.level
             td = user.level_label
-            td = user.cash_account_balance
+            td = '%.2f %s' % [user.overall_balance, CASH_CURRENCY]
             td = user.trades

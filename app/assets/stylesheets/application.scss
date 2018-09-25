@@ -32,9 +32,7 @@ select.form-control {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  width: 100%;
-  height: 1000px;
-
+  min-height: 1000px;
 }
 
 .font-size-12 {
@@ -47,4 +45,8 @@ select.form-control {
 
 .shade-primary {
   background: #fbfcffe8
+}
+
+.no-margin {
+  margin: 0 !important;
 }

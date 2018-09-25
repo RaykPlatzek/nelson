@@ -29,13 +29,12 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.pair_id = @order.account.pair_id
-    @order.value = -@order.value if @order.sell_order?
     begin
-      @order.trading_price = @order.pair.current_valuation.price
+      set_default_values
     rescue RuntimeError => e
       return redirect_to new_order_path, alert: e.message 
     end
+    return redirect_to new_order_path, alert: 'Invalid Order, please check value' unless @order.valid
     respond_to do |format|
       if @order.save
         format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
@@ -72,6 +71,12 @@ class OrdersController < ApplicationController
   end
 
   private
+    def set_default_values
+      @order.pair_id = @order.account.pair_id
+      @order.value = -@order.value if @order.sell_order?
+      @order.trading_price = @order.pair.current_valuation.price
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])

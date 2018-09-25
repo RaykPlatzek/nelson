@@ -21,7 +21,11 @@ class User < ApplicationRecord
   end
 
   def money_invested
-    trading_accounts.all.map(&:balance).sum
+    trading_accounts.all.map {|account| account&.last_account_valuation}.sum
+  end
+
+  def overall_balance
+    cash_account_balance + money_invested
   end
 
   def has_account?(account)

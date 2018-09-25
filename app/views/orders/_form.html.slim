@@ -32,7 +32,9 @@
             .form-group
               .col-md-12
                 = f.label "How much do you want to invest:"
-                =< f.input :value, label: false, :input_html => {value: number_with_precision(f.object.value, precision: 2) }
+                .row.no-margin
+                  =< f.input :value, label: false, :input_html => {class: "text-right", value: number_with_precision(f.object.value, precision: 2) }
+                  strong =< CASH_CURRENCY
 
             .col-md-12.m-t-xl
               = f.submit "Create Order", class: "btn btn-primary btn-block"

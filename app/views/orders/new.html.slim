@@ -1,7 +1,7 @@
 .pageheader.text-center
   h1 Create new order
 - unless current_user.trading_accounts.present?
-  = "You need to create at least one investment account to start trading"
+  .color-white = "You need to create at least one investment account to start trading"
   br
   => link_to "Create Investment Account", new_account_path, class: "btn btn-warning"
 - else

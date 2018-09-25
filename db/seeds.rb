@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts '...adding default Pairs'
-  ["AUDUSD", "USDAUD", "AUDEUR", "EURUSD", "USDEUR"].each { |code| Pair.find_or_create_by!(code: code) }
+  ["AUDUSD", "AUDEUR", "AUDGBP", "AUDJPY"].each { |code| Pair.find_or_create_by!(code: code) }
 
 puts '...adding default User'
   User.create!(name: "Rayk", email: "rayk@me.com", password: "konkret", password_confirmation: "konkret")

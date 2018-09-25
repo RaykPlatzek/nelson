@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_132114) do
+ActiveRecord::Schema.define(version: 2018_09_25_190032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2018_09_24_132114) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "account_type"
+    t.decimal "units", precision: 35, scale: 6, default: "0.0"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -33,7 +34,7 @@ ActiveRecord::Schema.define(version: 2018_09_24_132114) do
     t.string "order_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "trading_price", precision: 35, scale: 2
+    t.decimal "trading_price", precision: 35, scale: 6
   end
 
   create_table "pairs", force: :cascade do |t|

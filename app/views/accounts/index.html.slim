@@ -2,13 +2,15 @@
   h1 Your Trading Accounts
 
 .pull-right
-  = link_to "Create new account", new_account_path, class: "btn btn-sm btn-info" 
+  = link_to "New Trade", new_order_path, class: "btn btn-sm btn-primary"  
+  =< link_to "Create new account", new_account_path, class: "btn btn-sm btn-info"
 
 .clearfix.m-t-xl
 
 - @accounts.each.with_index do |account, i|
   .row
-    .col-md-12
+    .col-md-3
+    .col-md-6
       .panel.panel-default
         .panel-heading
           h3.panel-title Account for #{account.pair.code }
@@ -22,13 +24,17 @@
               thead
                 tr.text-right
                   th #
+                  - if account.account_type == TRADING_ACCOUNT
+                    th Units
                   th Curreny Pair
-                  th Balance
+                  th = account.account_type == CASH_ACCOUNT ? "Balance" : "Last Valuation"
                   th Number of trades
 
               tbody
                 tr.text-right
                   td = i+1
+                  - if account.account_type == TRADING_ACCOUNT
+                    td = account.units
                   td = account.pair.code 
-                  td = '%.2f' % account.balance
+                  td = account.account_type == CASH_ACCOUNT ? '%.2f' % account.balance : '%.2fAUD' % account.last_account_valuation
                   th = account.orders.count
