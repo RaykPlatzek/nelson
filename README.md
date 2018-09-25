@@ -1,24 +1,62 @@
-# README
+# Nelson (work in progress)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Nelson is an ongoing side project to enhance my skills and implement new technology. It is a trading game which
+allows the user to trade forex currency pairs on a training account. Built in Ruby on Rails, it uses the 1forge.com
+API to get live trading data every three minutes or immediately for each trade.
 
-Things you may want to cover:
+## Getting started
 
-* Ruby version
+Each user/player starts with 1000AUD on their cash account, the goal is then to make the most of your trading and climb up the leaderboard.
 
-* System dependencies
+Test the application here: [Live Demo of Nelson](http://nelson-says.herokuapp.com)
 
-* Configuration
+### Run the app on your own server
+Stack used:
+```
+Ruby 2.4.1
+Rails 5.2.0
+```
 
-* Database creation
+### Installing
+```
+bundle install
+bundle update
+rake db:create
+rake db:migrate
+rake db:seed
+```
 
-* Database initialization
+The application is now ready to use.
+To run your server:
+```
+rails s
+```
 
-* How to run the test suite
+Open your web browser and navigate to
+```
+localhost:3000
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Current Features include
+ * login / sign-up as user
+ * cash account
+ * trading accounts
+ * valuations update every 3 minutes by running clock job and 1forge.com API
+ * buy or sell function
+ * basic leaderboard based on money in cash_account
 
-* Deployment instructions
+## Future Goals (as of last commit of README file)
 
-* ...
+* add nice front-end design and JS notifications to direct user (e.g. using sweet-alert)
+* add GraphQL endpoint to get current leaderboard and/or account details for user
+
+
+---- AI implementation ------
+* AI stage 1: implement a machine learning algorithm which will initially, give trading advice
+* AI stage 2: implement AI to trade autonomously and compete against other users
+* AI stage 3: implement plug to live trading account and let AI trade real money 
+
+## Contribute
+
+If you want to get involved, feel free to contact me on:
+[@rayk](mailto:rayk.platzek@gmail.com)
