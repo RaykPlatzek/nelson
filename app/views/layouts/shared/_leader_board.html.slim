@@ -15,7 +15,7 @@ h1.m-t-xl.text-center.color-white class=("#{'color-white' if controller?('landin
           th Balance
           th Trades
       tbody
-        - User.leaders_by_cash_account.each.with_index do |user, index|
+        - User.leaders.each.with_index do |user, index|
           tr
             td class='#{trend_color(TREND_NO_CHANGE)} text-white text-center fa fa-arrow-circle-#{TREND_NO_CHANGE}' style="display: table-cell" 
             td = index + 1

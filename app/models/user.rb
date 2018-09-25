@@ -7,9 +7,9 @@ class User < ApplicationRecord
   has_many :orders
   after_create :create_cash_account
 
-  def self.leaders_by_cash_account
-    leading_cash_accounts = Account.where(account_type: CASH_ACCOUNT).order(balance: :desc).take(LEADER_BOARD_LENGTH)
-    leading_cash_accounts.map {|account| account.user}
+  def self.leaders
+    user_balance_array = User.all.map {|user| [user, user.overall_balance]}.sort_by(&:last).reverse
+    user_balance_array.take(LEADER_BOARD_LENGTH).map {|user_balance| user_balance[0]}
   end
 
   def trades
