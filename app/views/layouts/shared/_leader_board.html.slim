@@ -1,7 +1,9 @@
-h1.m-t-xl.text-center 
-  = "Leader Board"
-  .col-md-12.mt-5 
-    table.table.table-striped.table-bordered.table-hover
+h1.m-t-xl.text-center.color-white class=("#{'color-white' if controller?('landing_pages') }")
+  strong = "Leader Board"
+.row
+  .col-6.col-md-4
+  .col-6.col-md-4.mt-5.font-size-12
+    table.table.table-striped.table-bordered.table-hover.shade-primary
       thead
         tr
           th Trend

@@ -9,14 +9,14 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'base'
-  body
-    section#main-wrapper.theme-default
+  body class=("#{ 'landing_pages' if controller?('landing_pages') && action?('index')}")
+    section#main-wrapper.theme-dark-full
       header#header
         = render partial: "layouts/shared/header"
       - if current_user.present?
         aside.sidebar.sidebar-left
           = render partial: "layouts/shared/leftsidebar"
-      section.main-content-wrapper
+      section.main-content-wrapper style=("#{ 'background: none;' if controller?('landing_pages') && action?('index')}")
         = yield
         = render partial: "layouts/shared/footer"
     / = render partial: "layouts/shared/config"

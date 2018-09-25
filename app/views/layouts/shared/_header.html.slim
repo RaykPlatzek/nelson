@@ -41,6 +41,6 @@ ul.nav.navbar-nav.navbar-right
   - else
     .row.m-2
       li 
-        =< link_to "Login", new_user_session_path, class: "btn btn-primary"
+        = link_to "Login", new_user_session_path, class: "btn btn-primary"
       li
-        = link_to "Sign-up", new_user_registration_path, class: "btn btn-primary"
+        .m-l-sm =< link_to "Sign-up", new_user_registration_path, class: "btn btn-primary"

@@ -17,3 +17,23 @@ select.form-control {
   width: 30px;
   height: 30px;
 }
+
+.landing_pages {
+  background: image_url('background.jpg')no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.font-size-12 {
+  font-size: 12px !important;
+}
+
+.color-white {
+  color: white;
+}
+
+.shade-primary {
+  background: #fbfcffb0;
+}

@@ -6,7 +6,7 @@ API to get live trading data every three minutes or immediately for each trade.
 
 ## Getting started
 
-Each user/player starts with 1000AUD on their cash account, the goal is then to make the most of your trading and climb up the leaderboard.
+Each player starts with a balance of 1,000 AUD in their cash account. The goal: to multiply it! Train with Nelson to improve your trading skills and climb up the leaderboard.
 
 Test the application here: [Live Demo of Nelson](http://nelson-says.herokuapp.com)
 
@@ -37,7 +37,7 @@ Open your web browser and navigate to
 localhost:3000
 ```
 
-## Current Features include
+## Current features include (as of last commit of README file)
  * login / sign-up as user
  * cash account
  * trading accounts
@@ -45,8 +45,9 @@ localhost:3000
  * buy or sell function
  * basic leaderboard based on money in cash_account
 
-## Future Goals (as of last commit of README file)
+## Future goals
 
+* adding CI via Circle CI
 * add nice front-end design and JS notifications to direct user (e.g. using sweet-alert)
 * add GraphQL endpoint to get current leaderboard and/or account details for user
 
