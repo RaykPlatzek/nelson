@@ -9,14 +9,14 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'base'
-  body class=("#{ 'landing_pages' if controller?('landing_pages') && action?('index')}")
+  body class=("#{ controller?('landing_pages') ? 'landing-pages' : 'dashboard-pages'}")
     section#main-wrapper.theme-dark-full
       header#header
         = render partial: "layouts/shared/header"
       - if current_user.present?
         aside.sidebar.sidebar-left
           = render partial: "layouts/shared/leftsidebar"
-      section.main-content-wrapper style=("#{ 'background: none;' if controller?('landing_pages') && action?('index')}")
+      section.main-content-wrapper class=("#{ controller?('landing_pages') ? 'landing-pages' : 'dashboard-pages'}")
         = yield
         = render partial: "layouts/shared/footer"
     / = render partial: "layouts/shared/config"
@@ -35,5 +35,12 @@ html
         toastr.options.positionClass = 'toast-top-left';
         toastr[messageType]("#{j message.html_safe}").css('width', '300px');;
       })();
+
+javascript:
+
+  $('.main-content-wrapper').mouseout(function() {
+    $('#main-wrapper').addClass("sidebar-mini");
+  });
+
 
 

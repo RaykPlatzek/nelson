@@ -8,13 +8,13 @@ section#main-content
           .col-md-6
               .panel.panel-solid-success.widget-mini
                 .panel-body
-                  i.icon-bar-chart
+                  i.fa.fa-money
                   span.title.text-center Cash Account Balance
                   span.total.text-center = '%.2f' % current_user&.cash_account_balance
           .col-md-6
               .panel.panel-solid-info.widget-mini
                 .panel-body
-                  i.icon-bar-chart
+                  i.fa.fa-globe
                   span.title.text-center Money invested
                   span.total.text-center = '%.2f' % current_user&.money_invested
   - else

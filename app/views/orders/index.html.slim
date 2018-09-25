@@ -7,23 +7,26 @@
 .clearfix
 
 - @trading_accounts.each do |account|
-  .col-md-12-m-t-l
-    h4 = "Trades for  #{account&.pair&.code}: "
-    table.table.table-striped.table-bordered.table-hover
-      thead
-        tr
-          th Trade
-          th Order Type
-          th Code
-          th Trading Price
-          th Value
-          th Trading time
-      tbody
-        - account.orders.each_with_index do |order, index|
+  .row
+    .col-6.col-md-4
+    .col-6.col-md-4.mt-5.font-size-12
+      h3.color-white 
+        strong = "Trades for  #{account&.pair&.code}: "
+      table.table.table-striped.table-bordered.table-hover.shade-primary
+        thead
           tr
-            td = index + 1
-            td = order.order_type
-            td = order.pair.code
-            td.text-right = '%.6f' % order.trading_price
-            td.text-right = '%.2f' % order.value + CASH_CURRENCY
-            td = order.created_at.to_s
+            th Trade
+            th Order Type
+            th Code
+            th Trading Price
+            th Value
+            th Trading time
+        tbody
+          - account.orders.each_with_index do |order, index|
+            tr
+              td = index + 1
+              td = order.order_type
+              td = order.pair.code
+              td.text-right = '%.6f' % order.trading_price
+              td.text-right = '%.2f' % order.value + CASH_CURRENCY
+              td = order.created_at.to_s

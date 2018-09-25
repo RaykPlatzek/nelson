@@ -4,9 +4,10 @@
   = link_to "Refresh all", valuations_update_all_path, method: :post, class: "btn btn-info"
 .row
   - @all_pairs.each do |pair|
-    .col-md-6.mt-5 
-      h4 = "For #{pair.code}: " + pair.advise
-      table.table.table-striped.table-bordered.table-hover
+    .col-md-6.mt-5
+      h4.color-white 
+        strong = "For #{pair.code}: " + pair.advise
+      table.table.table-striped.table-bordered.table-hover.shade-primary
         thead
           tr
             th Trend
