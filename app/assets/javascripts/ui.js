@@ -1,9 +1,2 @@
 //= require app/bootstrap-slider/js/bootstrap-slider
 //= require app/sortNestable/js/jquery.nestable
-//= require app/messenger/js/underscore-min
-//= require app/messenger/js/backbone-min
-//= require app/messenger/js/messenger.min
-//= require app/messenger/js/messenger-theme-future
-//= require app/messenger/js/demo/location-sel
-//= require app/messenger/js/demo/theme-sel
-//= require app/messenger/js/demo/demo-messages

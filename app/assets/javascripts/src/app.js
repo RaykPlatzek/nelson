@@ -235,8 +235,6 @@ var app = function() {
 
         ];
 
-
-
         window.onload = function() {
             var ctx1 = document.getElementById("canvas1").getContext("2d");
             window.myLine = new Chart(ctx1).Line(lineChartData, {

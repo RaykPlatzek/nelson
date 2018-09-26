@@ -17,6 +17,7 @@
 //= require bootstrap-sprockets
 //= require activestorage
 //= require toastr
+//= require Chart.min
 //= require src/app
 //= require turbolinks
 //= require_tree .
@@ -30,7 +31,7 @@ $( document ).ready(function() {
    'onclick': null,
    'showDuration': '400',
    'hideDuration': '1000',
-   'timeOut': '5000',
+   'timeOut': '2000',
    'extendedTimeOut': '1000',
    'showEasing': 'swing',
    'hideEasing': 'linear',

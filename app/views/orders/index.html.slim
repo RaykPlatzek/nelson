@@ -8,27 +8,33 @@
 
 - @trading_accounts.each do |account|
   .row
-    .col-3
-    .col-6.mt-5.font-size-12
-      h3.color-white 
-        strong = "Trades for  #{account&.pair&.code}: "
-      table.table.table-striped.table-bordered.table-hover.shade-primary
-        thead
-          tr
-            th Trade
-            th Order Type
-            th Units
-            th Code
-            th Trading Price
-            th Money invested
-            th Trading time
-        tbody
-          - account.orders.each_with_index do |order, index|
-            tr
-              td = index + 1
-              td = order.order_type
-              td = order.units_traded
-              td = order.pair.code
-              td.text-right = '%.6f' % order.trading_price
-              td.text-right = '%.2f' % order.value + CASH_CURRENCY
-              td = order.created_at.to_s
+    .col-md-2
+    .col-md-8  
+      .panel.panel-primary
+        .panel-heading
+          h3.panel-title = "Trades for #{ account.pair.code }"
+          .actions.pull-right
+            i.fa.fa-chevron-down
+            i.fa.fa-times
+        .panel-body
+          .table-responsive
+            table.table.table-striped.table-bordered.table-hover.shade-primary
+              thead
+                tr
+                  th Trade
+                  th Order Type
+                  th Units
+                  th Code
+                  th Trading Price
+                  th Money invested
+                  th Trading time
+              tbody
+                - account.orders.each_with_index do |order, index|
+                  tr
+                    td = index + 1
+                    td = order.order_type
+                    td = order.units_traded
+                    td = order.pair.code
+                    td.text-right = '%.6f' % order.trading_price
+                    td.text-right = '%.2f' % order.value + CASH_CURRENCY
+                    td = order.created_at.to_s

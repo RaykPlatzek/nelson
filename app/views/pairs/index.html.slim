@@ -2,28 +2,35 @@
   h1 Available currency-pairs and latest valuations
 .m-t-xl.text-center
   = link_to "Refresh all", valuations_update_all_path, method: :post, class: "btn btn-info"
+
 .row
   - @all_pairs.each do |pair|
-    .col-md-6.mt-5
-      h4.color-white 
-        strong = "For #{pair.code}: "
-      table.table.table-striped.table-bordered.table-hover.shade-primary
-        thead
-          tr
-            th Trend
-            th Code
-            th Price
-            th Ask
-            th Bid
-            / th Timestamp
-            th Created at
-        tbody
-          - pair.last_valuations.each do |valuation|
-            tr
-              td class='#{trend_color(valuation.trend)} text-white text-center fa fa-arrow-circle-#{valuation.trend}' style="display: table-cell" 
-              td = valuation.pair.code
-              td = '%.6f' % valuation.price
-              td = '%.6f' % valuation.ask
-              td = '%.6f' % valuation.bid
-              / td = valuation.timestamp
-              td = valuation.created_at.to_s
+    .col-md-6  
+      .panel.panel-primary
+        .panel-heading
+          h3.panel-title #{ pair.code }
+          .actions.pull-right
+            i.fa.fa-chevron-down
+            i.fa.fa-times
+        .panel-body
+          .table-responsive
+            table.table.table-striped.table-bordered.table-hover.shade-primary
+              thead
+                tr
+                  th Trend
+                  th Code
+                  th Price
+                  th Ask
+                  th Bid
+                  / th Timestamp
+                  th Created at
+              tbody
+                - pair.last_valuations.each do |valuation|
+                  tr
+                    td class='#{trend_color(valuation.trend)} text-white text-center fa fa-arrow-circle-#{valuation.trend}' style="display: table-cell" 
+                    td = valuation.pair.code
+                    td = '%.6f' % valuation.price
+                    td = '%.6f' % valuation.ask
+                    td = '%.6f' % valuation.bid
+                    / td = valuation.timestamp
+                    td = valuation.created_at.to_s

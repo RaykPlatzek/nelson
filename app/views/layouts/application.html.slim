@@ -9,6 +9,8 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'base'
+    script src="https://cdn.plot.ly/plotly-latest.min.js"
+
   body class=("#{ controller?('landing_pages') ? 'landing-pages' : 'dashboard-pages'}")
     section#main-wrapper.theme-dark-full
       header#header

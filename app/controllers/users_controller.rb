@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :dashboard]
+  decorates_assigned :user, with: UserDecorator
   # GET /users
   # GET /users.json
   def index
@@ -9,6 +9,10 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @account_labels = ["Cash Account"]
+    @account_labels += current_user.trading_accounts.map {|account| account.pair.code + " Trading Account"} 
+    @account_values = [current_user.cash_account.balance]
+    @account_values += current_user.trading_accounts.map {|account| account.last_account_valuation}
   end
 
   # GET /users/1
@@ -68,7 +72,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
