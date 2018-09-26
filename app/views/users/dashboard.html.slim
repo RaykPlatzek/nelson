@@ -1,38 +1,36 @@
 .pageheader.text-center
   h1 Dashboard
 
-.row
-  .col-lg-6
-    section#main-content.animated.fadeInUp
-      .panel.panel-primary
-        .panel-heading
-          h3.panel-title Investment Breakdown
-          .actions.pull-right
-            i.fa.fa-chevron-down
-            i.fa.fa-times
-        .panel-body.text-center
-          div
-            canvas id="investmentsChart"
-            div id='chart-data' data={labels: "#{@account_labels}", values: "#{@account_values}"}
-  .col-lg-6
-    section#main-content.pull-right
-      - if current_user.accounts.present?
-            .row
-              .col-md-6
-                  .panel.panel-solid-success.widget-mini
-                    .panel-body
-                      i.fa.fa-money
-                      span.title.text-center Cash Account Balance
-                      span.total.text-center = '%.2f %s' % [current_user&.cash_account_balance, CASH_CURRENCY]
-              .col-md-6
-                  .panel.panel-solid-info.widget-mini
-                    .panel-body
-                      i.fa.fa-globe
-                      span.title.text-center Valuation of investment
-                      span.total.text-center = '%.2f %s' % [current_user&.money_invested, CASH_CURRENCY]
-      - else
-        strong = "Please open at least one trading account to start playing"
-        div = link_to "Create my first trading account", new_account_path, class: "btn btn-sm btn-info"
+.row.m-t-xl
+  .col-md-6
+    .panel.panel-primary
+      .panel-heading
+        h3.panel-title Investment Breakdown
+        .actions.pull-right
+          i.fa.fa-chevron-down
+          i.fa.fa-times
+      .panel-body.text-center
+        div
+          canvas id="investmentsChart"
+          div id='chart-data' data={labels: "#{@account_labels}", values: "#{@account_values}"}
+  .col-md-6
+    - if current_user.accounts.present?
+          .row
+            .col-md-6
+                .panel.panel-solid-success.widget-mini
+                  .panel-body
+                    i.fa.fa-money
+                    span.title.text-center Cash Account Balance
+                    span.total.text-center = '%.2f %s' % [current_user&.cash_account_balance, CASH_CURRENCY]
+            .col-md-6
+                .panel.panel-solid-info.widget-mini
+                  .panel-body
+                    i.fa.fa-globe
+                    span.title.text-center Valuation of investment
+                    span.total.text-center = '%.2f %s' % [current_user&.money_invested, CASH_CURRENCY]
+    - else
+      strong = "Please open at least one trading account to start playing"
+      div = link_to "Create my first trading account", new_account_path, class: "btn btn-sm btn-info"
 
 = render partial: "./layouts/shared/leader_board"
 
@@ -70,7 +68,7 @@ javascript:
           tooltips: {
             enable: true,
             backgroundColor: '#999',
-            displayColors: false,
+            displayColors: true,
             callbacks: {
             label: function(tooltipItems, data) {
               var index = tooltipItems.index;
