@@ -1,19 +1,64 @@
-h1 Listing valuations
+/ .clearfix
+/   .pull-right
+/     = simple_form_for(:search, url: valuations_path , method: :get, html: { class: 'form-control',  id: 'date-range', 'data-from' => @from_date, 'data-to' => @to_date }) do |f|
+/       => f.input :date_range, input_html: { placeholder: 'Date Range', style: 'width: 300px' }
+/       .form-group
+/         => f.submit 'Search', class: 'btn btn-primary'
 
-table
-  thead
-    tr
-      th
-      th
-      th
+.col-md-12
+  div#plotly-div
+  
+javascript:
 
-  tbody
-    - @valuations.each do |valuation|
-      tr
-        td = link_to 'Show', valuation
-        td = link_to 'Edit', edit_valuation_path(valuation)
-        td = link_to 'Destroy', valuation, data: { confirm: 'Are you sure?' }, method: :delete
+  // $(document).ready(dateRangePicker);
+  // $(document).on('page:load', dateRangePicker);
 
-br
+  var valuations = {
+      mode: 'text',
+      text: #{raw @chart_data_pairs.valuation_labels},
+      hoverinfo: "x+text",
+      name: 'Valuations',
+      x: #{raw @chart_data_pairs.date_range_chart},
+      close: #{raw @chart_data_pairs.valuation_price_numbers},
+      open: #{raw @chart_data_pairs.valuation_open_price_numbers}, 
+      high: #{raw @chart_data_pairs.valuation_ask_numbers}, 
+      low: #{raw @chart_data_pairs.valuation_bid_numbers},
+      decreasing: {line: {color: '#7F7F7F'}}, 
+      increasing: {line: {color: '#17BECF'}}, 
+      line: {color: 'rgba(31,119,180,1)'}, 
+      type: 'candlestick', 
+      xaxis: 'x', 
+      yaxis: 'y'
+    };
 
-= link_to 'New Valuation', new_valuation_path
+    var layout = {
+      dragmode: 'zoom', 
+      hoverlabel: {
+        namelength: 1,
+        font: { size: 13 },
+        },
+      margin: {
+        r: 10, 
+        t: 25, 
+        b: 40, 
+        l: 60
+      }, 
+      showlegend: true, 
+      xaxis: {
+        autorange: true, 
+        domain: [0, 1], 
+        range: ["#{@from_date.to_date}", "#{@to_date.to_date}"], 
+        rangeslider: {range: ["#{@from_date.to_date}", "#{@to_date.to_date}"]}, 
+        title: 'Date', 
+        type: 'date'
+      }, 
+      yaxis: {
+        autorange: true,
+        hoverlabel: "test",
+        hoverformat: '0.0f', 
+        domain: [0, 1], 
+        range: [#{@chart_data_pairs.valuation_bid_numbers.min}, #{@chart_data_pairs.valuation_ask_numbers.max}], 
+        type: 'linear'
+      }
+    };
+    Plotly.plot('plotly-div', valuations, layout);

@@ -5,7 +5,16 @@ class ValuationsController < ApplicationController
   # GET /valuations
   # GET /valuations.json
   def index
-    @valuations = Valuation.all
+    @trading_accounts = current_user.trading_accounts
+    if params[:search].present? && params[:search][:date_range].present?
+      date_range = params[:search][:date_range].split(' - ')
+      @from_date = Date.parse(date_range[0])
+      @to_date = Date.parse(date_range[1])
+    else
+      @from_date = DateTime.now - 30.days
+      @to_date = DateTime.now
+    end
+    @chart_data_pairs = ValuationChartData.new(@trading_accounts.first.pair, @from_date, @to_date)
   end
 
   # GET /valuations/1
