@@ -27,6 +27,7 @@ group :development do
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
   gem 'pry-nav'
+  gem 'graphiql-rails'
 end
 
 group :test do
@@ -60,3 +61,5 @@ gem 'draper'
 gem 'chart-js-rails'
 gem 'momentjs-rails', '~> 2.9.0'
 gem 'bootstrap-datepicker-rails'
+gem 'graphql', '1.7.4'
+gem 'graphiql-rails', group: :development

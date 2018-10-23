@@ -120,6 +120,10 @@ GEM
       railties (>= 3.2, < 6.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.4.11)
+      railties
+      sprockets-rails
+    graphql (1.7.4)
     hashdiff (0.3.7)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -330,6 +334,8 @@ DEPENDENCIES
   devise
   draper
   font-awesome-rails
+  graphiql-rails
+  graphql (= 1.7.4)
   jbuilder (~> 2.5)
   jquery-rails
   jquery-ui-rails
