@@ -6,8 +6,6 @@ API to get live trading data every three minutes or immediately for each trade.
 
 ## Getting started
 
-Each player starts with a balance of 1,000 AUD in their cash account. The goal: to multiply it! Train with Nelson to improve your trading skills and climb up the leaderboard.
-
 Test the application here: [Live Demo of Nelson](http://nelson-says.herokuapp.com)
 
 ### Run the app on your own server
